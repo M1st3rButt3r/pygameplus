@@ -1,5 +1,6 @@
 import pygame
 import sys
+from . import rendering
 
 # Options
 caption = "Game"
@@ -8,10 +9,9 @@ screen_size = [600, 600]
 
 def init():
     global clock
-    global game_objects
     pygame.init()
     clock = pygame.time.Clock()
-    game_objects = pygame.sprite.Group()
+    rendering.add_render_layer(0)
 
 
 def setup():
@@ -21,13 +21,15 @@ def setup():
 
 
 def update():
-    for game_object in game_objects:
-        game_object.update()
+    for layer in rendering.render_layers.values():
+        for game_object in layer:
+            game_object.update()
 
 
 def draw():
     screen.fill((0, 0, 0))
-    game_objects.draw(screen)
+    for layer in rendering.render_layers.values():
+        layer.draw(screen)
     pygame.display.update()
 
 
