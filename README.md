@@ -9,7 +9,7 @@ pip install pygameplus
 - pygame
 
 ## Roadmap
-- ❌ GameObject class
+- ✔️ GameObject class
     - ❌ Rendering layers
     - ❌ Component based workflow
 - ❌ Input Manager
